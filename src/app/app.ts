@@ -1,24 +1,50 @@
-import {Component, inject, signal} from '@angular/core';
+import {afterNextRender, Component, ElementRef, inject, Renderer2, signal, VERSION} from '@angular/core';
 import {AuthService} from '../shared/services/auth-service';
+import {Demo} from '../features/components/demo';
+import {GlobalSearch} from '../shared/components/global-search';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [Demo, GlobalSearch],
   template: `
-    <div class="h-96 bg-amber-100 rounded-xl p-6 flex justify-center items-center flex-col">
-        <h1 class="text-xl text-center">
-          <span class="font-bold text-red-500">This is Soceca.</span>
-          <br>Coming soon
+    <div class="w-[80px] lg:w-[100px] bg-white flex flex-col  items-center
+        z-10 fixed bottom-0 top-0 left-0 shadow-md py-2 px-2 lg:px-4">
+      <div class="flex justify-between h-[50px] ">
+        <div class="flex justify-between size-[50px] bg-white shadow rounded-full">
+            <i class="la la-bus la-3x text-orange-400"></i>
+        </div>
+      </div>
+    </div>
+    <div class="min-h-full bg-stone-200 rounded-xl p-6 flex justify-center items-center flex-col">
+        <h1 class="text-xl text-center capitalize">
+          <span class="font-bold text-red-500">This is {{ title() }}.</span>
+          <br>Coming soon this Fall
         </h1>
 
       <div class="mt-4">
-       <span class="font-bold">User Name : {{user().username}}</span>
+        <global-search />
       </div>
+
+
+
     </div>
   `,
   styles: ``
 })
 export class App {
-  protected readonly title = signal('soceca-app');
+  protected readonly title = signal('soceca');
   protected user  = inject(AuthService).getUser();
+  #elemRef  = inject(ElementRef);
+  #renderer2 = inject(Renderer2);
+  myArr = signal([2,4,6,8,10]);
+  constructor() {
+    afterNextRender( () => {
+      console.log("Angular is Done Rendering", this.#elemRef.nativeElement);
+      this.#renderer2.setAttribute(this.#elemRef.nativeElement, 'ng-version', `${VERSION.full}+${this.title()}`);
+      this.#renderer2.setAttribute(this.#elemRef.nativeElement, 'built-by', `Asom Services Inc`);
+      this.#renderer2.setAttribute(this.#elemRef.nativeElement, 'supported-by', `Alvana Iwuh`);
+      // remove the ng version
+      //this.#renderer2.removeAttribute(this.#elemRef.nativeElement, "ng-version");
+    });
+  }
 }

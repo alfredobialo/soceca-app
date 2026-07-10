@@ -10,11 +10,12 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "path": "src/",
+          "path": "src",
           "inlineStyle": true,
           "inlineTemplate": true,
           "skipTests": true,
-          "flat": true
+          "flat": true,
+          "prefix": ""
         },
         "@schematics/angular:interceptor": {
           "flat": true,
@@ -27,7 +28,7 @@
           "path": "src/shared/route-resolvers"
         },
         "@schematics/angular:service": {
-          "path": "src/",
+          "path": "src",
           "skipTests": true,
           "injectable": false,
           "flat": true
@@ -40,7 +41,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "soc",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
@@ -53,9 +54,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "styles": ["src/material-theme.scss", "src/styles.css"],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "security": {
