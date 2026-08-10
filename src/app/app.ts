@@ -1,11 +1,12 @@
 import {afterNextRender, Component, ElementRef, inject, Renderer2, signal, VERSION} from '@angular/core';
 import {AuthService} from '../shared/services/auth-service';
-import {Demo} from '../features/components/demo';
 import {GlobalSearch} from '../shared/components/global-search';
+import {ButtonDirective} from 'primeng/button';
+import {MainApp} from '../assignment2';
 
 @Component({
   selector: 'app-root',
-  imports: [Demo, GlobalSearch],
+  imports: [GlobalSearch, ButtonDirective, MainApp],
   template: `
     <div class="w-[80px] lg:w-[100px] bg-white flex flex-col  items-center
         z-10 fixed bottom-0 top-0 left-0 shadow-md py-2 px-2 lg:px-4">
@@ -23,6 +24,14 @@ import {GlobalSearch} from '../shared/components/global-search';
 
       <div class="mt-4">
         <global-search />
+      </div>
+
+      <div class="mt-4">
+        <button pButton [raised]="true" size="large" class="!px-8 !py-2 ">Post Transaction</button>
+      </div>
+
+      <div class="">
+        <MainApp />
       </div>
 
 
