@@ -9,7 +9,7 @@ import Aura from "@primeuix/themes/aura";
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes), provideClientHydration(),
+    provideRouter(routes),
     { provide : APP_ID, useValue: 'soc' },
     providePrimeNG({
       theme : {

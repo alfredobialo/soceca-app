@@ -16,12 +16,14 @@ import {MainApp} from '../assignment2';
         </div>
       </div>
     </div>
-    <div class="min-h-full bg-stone-200 rounded-xl p-6 flex justify-center items-center flex-col">
+    <div class="min-h-full bg-stone-400 rounded-xl p-6 flex justify-center items-center flex-col">
         <h1 class="text-xl text-center capitalize">
           <span class="font-bold text-red-500">This is {{ title() }}.</span>
-          <br>Coming soon this Fall
+          <br>Coming soon this Fall  :
         </h1>
-
+        <div class="text-xl  text-blue-600">
+          {{ngVersion()}}
+        </div>
       <div class="mt-4">
         <global-search />
       </div>
@@ -45,11 +47,13 @@ export class App {
   protected user  = inject(AuthService).getUser();
   #elemRef  = inject(ElementRef);
   #renderer2 = inject(Renderer2);
+  protected ngVersion    = signal<string>(`${VERSION.full}+${this.title()}`);
   myArr = signal([2,4,6,8,10]);
   constructor() {
     afterNextRender( () => {
+
       console.log("Angular is Done Rendering", this.#elemRef.nativeElement);
-      this.#renderer2.setAttribute(this.#elemRef.nativeElement, 'ng-version', `${VERSION.full}+${this.title()}`);
+      this.#renderer2.setAttribute(this.#elemRef.nativeElement, 'ng-version', this.ngVersion());
       this.#renderer2.setAttribute(this.#elemRef.nativeElement, 'built-by', `Asom Services Inc`);
       this.#renderer2.setAttribute(this.#elemRef.nativeElement, 'supported-by', `Alvana Iwuh`);
       // remove the ng version
