@@ -1,11 +1,10 @@
 import {Component, inject, signal, VERSION} from '@angular/core';
 import {AuthService} from '../shared/services/auth-service';
 import {GlobalSearch} from '../shared/components/global-search';
-import {ButtonDirective} from 'primeng/button';
 
 @Component({
   selector: 'app-root',
-  imports: [GlobalSearch, ButtonDirective],
+  imports: [GlobalSearch],
   template: `
     <div class="flex text-shadow-stone-800">
       <div class="w-[80px] lg:w-[100px] dark:bg-black/70 bg-white flex flex-col  items-center

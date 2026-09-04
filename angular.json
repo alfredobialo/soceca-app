@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "soceca-app": {
+    "ng-starterkit": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -88,10 +88,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "soceca-app:build:production"
+              "buildTarget": "ng-starterkit:build:production"
             },
             "development": {
-              "buildTarget": "soceca-app:build:development"
+              "buildTarget": "ng-starterkit:build:development"
             }
           },
           "defaultConfiguration": "development"

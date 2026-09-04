@@ -1,10 +1,9 @@
 import {Component, signal} from '@angular/core';
 import {FormField, form, required, minLength, FormRoot} from '@angular/forms/signals';
-import {ButtonDirective} from 'primeng/button';
 
 @Component({
   selector: 'global-search',
-  imports: [FormField, FormRoot, ButtonDirective],
+  imports: [FormField, FormRoot],
   template: `
     <form class="" [formRoot] = searchForm>
       <div
