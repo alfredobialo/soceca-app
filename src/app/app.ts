@@ -16,7 +16,7 @@ import {MainApp} from '../assignment2';
         </div>
       </div>
     </div>
-    <div class="min-h-full bg-stone-400 rounded-xl p-6 flex justify-center items-center flex-col">
+    <div class="min-h-full bg-stone-200 rounded-xl p-6 flex justify-center items-center flex-col">
         <h1 class="text-xl text-center capitalize">
           <span class="font-bold text-red-500">This is {{ title() }}.</span>
           <br>Coming soon this Fall  :
