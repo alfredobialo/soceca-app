@@ -1,10 +1,12 @@
 import {Component, inject, signal, VERSION} from '@angular/core';
 import {AuthService} from '../shared/services/auth-service';
 import {GlobalSearch} from '../shared/components/global-search';
+import {MobileView} from '../shared/components/mobile-view';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [GlobalSearch],
+  imports: [GlobalSearch, RouterOutlet],
   template: `
     <div class="flex text-shadow-stone-800">
       <div class="w-[80px] lg:w-[100px] dark:bg-black/70 bg-white flex flex-col  items-center
@@ -26,8 +28,10 @@ import {GlobalSearch} from '../shared/components/global-search';
           </div>
 
         </div>
-        <div class="mt-5 h-100 p-4">
-          This another content
+        <div class="mt-[200px]">
+          <div class="mt-5 h-100 p-4 flex justify-center items-center ">
+            <router-outlet />
+          </div>
         </div>
       </div>
     </div>
