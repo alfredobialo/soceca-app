@@ -18,7 +18,7 @@ import {RouterOutlet} from '@angular/router';
         </div>
       </div>
       <div class="flex-1">
-        <div class="h-[200px] dark:bg-stone-600 bg-stone-200  p-6 flex justify-center items-center flex-col">
+        <div class="h-[200px] dark:bg-stone-600 bg-white  p-6 flex justify-center items-center flex-col">
           <h1 class="text-xl text-center">
             <span class="font-bold dark:text-stone-300 text-stone-600 text-2xl">{{ title() }}.</span>
           </h1>
