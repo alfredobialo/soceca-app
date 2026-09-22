@@ -1,18 +1,19 @@
 import { Component , inject, signal} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {TaskManagerService} from '../services/TaskManagerService';
+import {Notification} from './notification';
 
 @Component({
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, Notification],
   selector: 'mobile-view',
   styles: ``,
   template: `
     <div class="rounded-2xl p-1 ring-2 overflow-hidden ring-green-300 h-[590px] w-[324px]  bg-white">
        <div class="p-1">
 
-         <div class="header border-1 text-xl flex justify-center items-center h-[50px] border-b-stone-400">
+         <div class="header px-3 border-1 text-xl flex justify-between items-center h-[50px] border-b-stone-400">
            <h1 class="">Auderz Mobile</h1>
-           <small>{{greetings()}}</small>
+           <app-notification />
          </div>
          <div class="header border-1 h-[468px] overflow-y-auto overflow-x-hidden border-b-stone-400">
            <router-outlet  ></router-outlet>

@@ -11,22 +11,14 @@ import {CategoryList} from '../task/category-list';
   selector: 'mobile-tasks',
   styles: ``,
   template: `
-  <div class="p-3">
-    <category-item [categoryModel]="catItem()"   />
-    <category-list [categories]="cats()"  [loading]="loading()" />
-
-  </div>`,
+    <div class="p-3">
+      <category-list [categories]="cats()" [loading]="loading()" />
+    </div>`,
 })
 export class MobileTasks {
-  catItem  = signal<TaskCategory>({
-    color  : "text-red-600",
-    name : "Cat Fish",
-    icon :"las la-trash",
-    id :"000001"
-  });
   taskSvc = inject(TaskManagerService);
   cats = this.taskSvc.getTaskCategory();
-  loading  = computed(() => {
+  loading = computed(() => {
     return this.cats().length === 0;
   });
 

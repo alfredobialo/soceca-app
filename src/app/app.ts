@@ -40,6 +40,6 @@ import {RouterOutlet} from '@angular/router';
 })
 export class App {
   protected readonly title = signal(`Angular v${VERSION.major} starter's kit`);
-  protected user = inject(AuthService).getUser();
+  protected user = inject(AuthService).getCurrentUser();
 
 }
