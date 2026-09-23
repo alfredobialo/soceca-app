@@ -5,7 +5,6 @@ import {CategoryList} from '../task/category-list';
 
 @Component({
   imports: [
-    CategoryItem,
     CategoryList
   ],
   selector: 'mobile-tasks',

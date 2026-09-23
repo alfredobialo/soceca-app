@@ -8,9 +8,10 @@ export class NotificationService {
   getUserNotificationCount(){
     // connect backend API endpoint
     const count  = signal(0);
-    const currentUser = this.authSvc.getCurrentUser();
+
     setTimeout(() => {
-      count.set(4);
+      const currentUser = this.authSvc.isUserAuthenticated();
+      count.set(currentUser ? 4 : 0);
     }, 1500);
     return count.asReadonly();
   }

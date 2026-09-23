@@ -2,6 +2,7 @@ import { Component , inject, signal} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {TaskManagerService} from '../services/TaskManagerService';
 import {Notification} from './notification';
+import {AuthService} from '../services/auth-service';
 
 @Component({
   imports: [RouterOutlet, RouterLink, Notification],
@@ -12,7 +13,7 @@ import {Notification} from './notification';
        <div class="p-1">
 
          <div class="header px-3 border-1 text-xl flex justify-between items-center h-[50px] border-b-stone-400">
-           <h1 class="">Auderz Mobile</h1>
+           <h1 class="">{{ !userData() ? "Login to Continue" :userData()?.name }}</h1>
            <app-notification />
          </div>
          <div class="header border-1 h-[468px] overflow-y-auto overflow-x-hidden border-b-stone-400">
@@ -47,4 +48,5 @@ import {Notification} from './notification';
 export class MobileView {
   private taskManager = inject(TaskManagerService) ;
   greetings = signal(this.taskManager.sayHello());
+  userData = inject(AuthService).getCurrentUser() ;
 }
