@@ -9,18 +9,18 @@ import {AuthService} from '../services/auth-service';
   selector: 'mobile-view',
   styles: ``,
   template: `
-    <div class="rounded-2xl p-1 ring-2 overflow-hidden ring-green-300 h-[590px] w-[324px]  bg-white">
-       <div class="p-1">
+    <div class="rounded-2xl p-0 ring-2 overflow-hidden ring-green-300 h-[590px] w-[324px]  bg-white">
+       <div class="p-0">
 
-         <div class="header px-3 border-1 text-xl flex justify-between items-center h-[50px] border-b-stone-400">
+         <div class="bg-red-700 text-white  px-3  text-xl flex justify-between items-center h-[50px] ">
            <h1 class="">{{ !userData() ? "Login to Continue" :userData()?.name }}</h1>
            <app-notification />
          </div>
-         <div class="header border-1 h-[468px] overflow-y-auto overflow-x-hidden border-b-stone-400">
+         <div class="  h-[468px] overflow-y-auto overflow-x-hidden border-b-stone-400">
            <router-outlet  ></router-outlet>
 
          </div>
-         <div class="header border-1 flex justify-evenly items-center bg-stone-600 h-[60px] border-b-stone-400">
+         <div class=" rounded-md flex justify-evenly items-center bg-stone-300 h-[60px]">
            @for(x of [2,3,4,5]; track $index){
              @switch($index){
                @case(0){

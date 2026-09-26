@@ -25,7 +25,11 @@ export class AuthService {
   }
 
   updateUserName(name: string) {
-    this.userDatabase[0].name = name;
+    const user = this.currentUser();
+    if (!user) return;
+    const updatedUser = {...user, name};
+    this.userDatabase = this.userDatabase.map(x => x.username === user.username ? updatedUser : x);
+    this.currentUser.set(updatedUser);
   }
 
   logUserIn(userId : string, pwd : string)

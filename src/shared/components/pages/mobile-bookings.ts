@@ -1,4 +1,4 @@
-import {Component, inject, signal} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import {RippleModule} from 'primeng/ripple';
@@ -10,24 +10,23 @@ import {AuthService} from '../../services/auth-service';
   styles: ``,
   template: `
     <div class="p-3">
-      <p class="mb-2">Change User Profile</p>
-      <input #n type="text" class="mb-6"
-             pInputText  [value]="updatedName().name" >
-      <button pButton pRipple (click)="updateName(n.value)">Change Profile Name</button>
+      @if (currentUser(); as user) {
+        <p class="mb-2">Change User Profile</p>
+        <input #n type="text" class="mb-6"
+               pInputText [value]="user.name">
+        <button pButton pRipple (click)="updateName(n.value)">Change Profile Name</button>
 
-      <p>{{updatedName().name}}</p>
-
+        <p>{{ user.name }}</p>
+      }
     </div>
 `,
 })
 export class MobileBookings {
-  //[(ngModel)]="name"
-  authService: AuthService  = inject(AuthService);
-  updatedName =  this.authService.getCurrentUser();
+  private readonly authService = inject(AuthService);
+  protected readonly currentUser = this.authService.getCurrentUser();
 
   updateName(newName: string) {
     this.authService.updateUserName(newName);
   }
 
 }
-

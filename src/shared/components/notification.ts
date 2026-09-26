@@ -6,12 +6,12 @@ import {NotificationService} from '../services/notificartionService';
   selector: 'app-notification',
   styles: ``,
   template: `
-    <div class="size-[40px] relative flex justify-center items-center rounded-full bg-gray-200" [class.bg-transparent]="notificationCount() <=0 ">
+    <div class="size-[40px] relative flex justify-center items-center rounded-full bg-red-900" [class.bg-transparent]="notificationCount() <=0 ">
       @if(notificationCount() >0){
-        <span class="absolute right-[5px] top-[-2px] text-red-600 text-[14px]">{{notificationCount()}}</span>
+        <span class="absolute right-[7px] top-[2px] text-white text-[14px]">{{notificationCount()}}</span>
 
       }
-      <i [class.text-red-700]="notificationCount() >0"
+      <i [class.text-white]="notificationCount() >0"
          [class.text-gray-200]="notificationCount() <= 0"
          class="scale-115 las la-bell"></i>
     </div>

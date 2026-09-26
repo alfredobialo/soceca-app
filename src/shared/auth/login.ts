@@ -1,6 +1,6 @@
 import {
   ChangeDetectionStrategy,
-  Component, inject,
+  Component, computed, inject,
   signal
 } from '@angular/core';
 
@@ -538,7 +538,7 @@ export class Login {
 
   readonly showPassword = signal(false);
 
-  readonly isLoading = this.authService.isProcessing;
+  readonly isLoading = computed(() => this.authService.isProcessing());
 
   readonly loginError = this.authService.lastLoginErrMsg;
 
@@ -588,7 +588,6 @@ export class Login {
 
     } finally {
 
-      this.isLoading.set(false);
 
     }
   }
